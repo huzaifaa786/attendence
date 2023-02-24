@@ -61,6 +61,16 @@ Student Add
                             <input name="phone" type="number" class="form-control" placeholder="Phone"
                                 required>
                         </div>
+                        <div class="col-md-6">
+                            <label>Select Course:</label>
+                            <select id="course_id" name="course_id" class="form-control form-control-select2 txt4" data-fouc required>
+                                <option selected disabled>Select Course</option>
+
+                                @foreach (App\Models\Course::all() as $course)
+                                    <option value="{{ $course->id }}">{{ $course->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                     </div>
                     <div class="form-group row">

@@ -50,12 +50,7 @@ Teacher Add
                             <input name="password" type="password" class="form-control" placeholder="Enter Email"
                                 required>
                         </div>
-                       
-                       
-
                     </div>
-                  
-
                     <div class="form-group row">
                         <div class="col-lg-8">
                             <button type="submit" class="btn btn-primary mr-2">Submit</button>

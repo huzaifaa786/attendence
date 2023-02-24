@@ -14,20 +14,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.auth.login');
+  return view('admin.auth.login');
 });
 
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.',], function () {
-          Route::view('login', 'admin.auth.login')->name('login');
-          Route::post('authenticate', 'AuthController@login')->name('authenticate');
-        Route::group(['middleware' => 'auth:admin'], function () {
-          Route::get('logout', 'AuthController@logout')->name('logout');
-            Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');
-            Route::resource('user', 'UserController');
-            Route::resource('teacher', 'TeacherController');
-
-        });
+  Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.',], function () {
+    Route::view('login', 'admin.auth.login')->name('login');
+    Route::post('authenticate', 'AuthController@login')->name('authenticate');
+    Route::group(['middleware' => 'auth:admin'], function () {
+      Route::get('logout', 'AuthController@logout')->name('logout');
+      Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');
+      Route::resource('user', 'UserController');
+      Route::resource('teacher', 'TeacherController');
+      Route::resource('course', 'CourseController');
+      Route::resource('subject', 'SubjectController');
+      Route::resource('timeslot', 'TimeSlotController');
+      Route::resource('lecture', 'LectureController');
     });
+  });
+
+    Route::group(['prefix' => 'teacher', 'namespace' => 'Teacher', 'as' => 'teacher.',], function () {
+      Route::group(['middleware' => 'auth:teacher'], function () {
+        Route::view('dashboard', 'teacher.dashboard.index')->name('dashboard');
+      Route::resource('content', 'ContentController');
+
+    });
+  });
 });

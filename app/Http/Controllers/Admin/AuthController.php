@@ -18,7 +18,12 @@ class AuthController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
 
             return redirect()->route('admin.dashboard');
-        } else {
+        }
+        elseif(Auth::guard('teacher')->attempt($credentials)){
+
+            return redirect()->route('teacher.dashboard');
+        }
+        else {
             // toastr()->error('Incorrect email or password');
             return redirect()->back()->withInput();
         }

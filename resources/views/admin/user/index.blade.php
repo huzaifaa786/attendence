@@ -32,6 +32,7 @@ Students
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>phone</th>
+                    <th>Course</th>
                     <th>Profile</th>
                     <th>Roll No</th>
                     <th>Guardian Name</th>
@@ -47,6 +48,7 @@ Students
                     <td>{{$user->lname}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>
+                    <td>{{$user->course->title}}</td>
                     <td><img src="{{$user->image}}" height="50" width="50"> </td>
                     <td>{{$user->roll_no}}</td>
                     <td>{{$user->guardian_name}}</td>

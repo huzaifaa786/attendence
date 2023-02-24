@@ -20,6 +20,7 @@ class CreateTeachersTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('password');
+            $table->string('api_token')->nullable();
             $table->timestamps();
         });
     }

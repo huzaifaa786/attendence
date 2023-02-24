@@ -18,16 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
-    Route::any('register','AuthController@register');
     Route::any('login', 'AuthController@login');
-    // Route::group(['middleware' => 'auth:api'], function () {
-
-    Route::any('logout','AuthController@logout');
-    Route::any('tournament','TournamentController@tournament');
-    Route::any('league','LeagueController@league');
-    Route::any('ticket/create','TicketController@create');
-    Route::any('ticket/get','TicketController@ticketGet');
-    Route::any('reply/create','TicketController@storeReply');
-    Route::any('reply/get','TicketController@replyGet');
-    // });
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::any('content','ContentController@content');
+    });
 });

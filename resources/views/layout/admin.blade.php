@@ -131,6 +131,35 @@
 										"></i>
 										<span class="menu-text">Teachers</span>
 									</a>
+								</li>	
+								<li class="menu-item {{Request::is('admin/course')?'menu-item-active':''}}" aria-haspopup="true">
+									<a href="{{route('admin.course.index')}}" class="menu-link">
+										<i class="menu-icon flaticon2-indent-dots
+										"></i>
+										<span class="menu-text">Courses</span>
+									</a>
+								</li>
+								<li class="menu-item {{Request::is('admin/subject')?'menu-item-active':''}}" aria-haspopup="true">
+									<a href="{{route('admin.subject.index')}}" class="menu-link">
+										<i class="menu-icon flaticon2-indent-dots
+										"></i>
+										<span class="menu-text">Subjects</span>
+									</a>
+								</li>
+								<li class="menu-item {{Request::is('admin/timeslot')?'menu-item-active':''}}" aria-haspopup="true">
+									<a href="{{route('admin.timeslot.index')}}" class="menu-link">
+										<i class="menu-icon flaticon2-indent-dots
+										"></i>
+										<span class="menu-text">Time Slots</span>
+									</a>
+								</li>
+								
+								<li class="menu-item {{Request::is('admin/lecture')?'menu-item-active':''}}" aria-haspopup="true">
+									<a href="{{route('admin.lecture.index')}}" class="menu-link">
+										<i class="menu-icon flaticon2-indent-dots
+										"></i>
+										<span class="menu-text">Lectures</span>
+									</a>
 								</li>
                                
 						

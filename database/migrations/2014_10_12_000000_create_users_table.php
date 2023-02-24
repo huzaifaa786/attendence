@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('guardian_name');
             $table->string('guardian_email');
             $table->string('api_token')->nullable();
+            $table->foreignId('course_id');
             $table->string('image')->default('images/user/user.png');
             $table->rememberToken();
             $table->timestamps();

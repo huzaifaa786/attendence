@@ -7,16 +7,9 @@ use stdClass;
 class FileHelper
 {
     public static function save($file, $path){
-        // $fileName = 'file-'.time().'.'.$file->getClientOriginalExtension();
-        
-        // $file->storeAs($path, $fileName);
-
-        // dd($path.$fileName);
-
-        // return $path.$fileName;
 
             $filename = $file->getClientOriginalName();
-            $Path = public_path().$path;
+            $Path = public_path().'/'.$path;
              $file->move($Path, $filename);
              return $path.$filename;
     } 
@@ -44,7 +37,7 @@ class FileHelper
 
         $object = new stdClass();
         $object->name = 'File-'. uniqid();
-        $object->handle = $file->storeAs('video', $fileName);
+        $object->handle = $file->storeAs('file', $fileName);
         return $object->handle;
     }
     public static function saveCVFile($file){

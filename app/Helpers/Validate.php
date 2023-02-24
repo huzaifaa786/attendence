@@ -31,26 +31,16 @@ class Validate{
             ];
     }
     
-    public static function register($request, $model, $addVerification = false){
-        if(Request::is('vendor/*')){
-        $validator = Validator::make($request->all(),$model::VendorRegisterRules());
-        }else{
+    public static function register($request, $model){
         $validator = Validator::make($request->all(),$model::registerRules());
-
-        }
         
         if($validator->fails()){
             toastr()->error($validator->errors()->first());
-            if(Request::is('vendor/*')){
-                Redirect::to(route('front.vendor.register'))->withInput()->send();
-            }else{
-                Redirect::to(route('user.register'))->withInput()->send();
-            }
+             Redirect::to(route('admin.user.create'))->withInput()->send();
            
         }
         else{
             $data = [ 'api_token' => Str::random(60) ] + $request->all();
-            if($addVerification) $data['email_verify_code'] = Str::random(20);
             return $data;
         }
           

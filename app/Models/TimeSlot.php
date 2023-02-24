@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Platform extends Model
+class TimeSlot extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title'
+        'start_time','end_time','day_id'
     ];
-    protected $hidden=['created_at','updated_at','pivot'];
-    
+
+    public function day(){
+        return $this->belongsTo(Day::class,'day_id');
+    }
 }

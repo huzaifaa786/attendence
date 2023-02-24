@@ -28,6 +28,7 @@ class User extends Authenticatable
         'guardian_email',
         'password',
         'image',
+        'course_id',
         'api_token',
     ];
 
@@ -54,6 +55,10 @@ class User extends Authenticatable
         return asset($value);
     }
 
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 
     public function setImageAttribute($value){
 	    if(is_string($value)){

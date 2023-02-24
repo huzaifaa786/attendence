@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ApiValidate;
+use App\Helpers\Validate;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,8 +39,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        // toastr()->info('Student was registered');
+        $credentials = Validate::register($request, User::class);
+  
+        User::create($credentials);
+        toastr()->info('Student was registered');
         return redirect()->back();
     }
 

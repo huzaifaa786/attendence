@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Validate;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -37,7 +38,9 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        Teacher::create($request->all());
+        $credentials = Validate::register($request, Teacher::class);
+        Teacher::create($credentials);
+        toastr()->info('Teacher was registered');
         return redirect()->back();
     }
 

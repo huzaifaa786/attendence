@@ -17,6 +17,7 @@ class Teacher  extends Authenticatable
         'email',
         'phone',
         'password',
+        'api_token',
     ];
 
     /**
@@ -27,4 +28,9 @@ class Teacher  extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }

@@ -9,7 +9,8 @@ trait UserMethods
     public static function registerRules()
     {
         return [
-            'name' => 'max:255|required',
+            'fname' => 'max:255|required',
+            'lname' => 'max:255|required',
             'email' => 'email|required|unique:users',
             'password' => 'min:6|required',
         
