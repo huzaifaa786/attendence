@@ -49,13 +49,13 @@ class FingerPrintController extends Controller
                     $string = 'add-id' . $check->fingerprint_id;
                     return $string;
                 } else {
-                    return response()->json(['message' => 'Nothing']);
+                    return 'Nothing';
                 }
             } else {
-                return response()->json(['message' => 'Invalid request']);
+                return 'Invalid request';
             }
         } else {
-            return response()->json(['message' => 'Missing parameters']);
+            return 'Missing parameters';
         }
     }
 
