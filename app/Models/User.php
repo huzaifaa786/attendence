@@ -30,6 +30,9 @@ class User extends Authenticatable
         'image',
         'course_id',
         'api_token',
+        'fingerprint_id',
+        'has_finger_id',
+        'enrolled',
     ];
 
     /**

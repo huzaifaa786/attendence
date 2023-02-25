@@ -22,6 +22,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
   Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.',], function () {
     Route::view('login', 'admin.auth.login')->name('login');
     Route::post('authenticate', 'AuthController@login')->name('authenticate');
+    Route::post('/finger/create','FingerPrintController@addFingerprintId')->name('finger.create');
+    Route::post('/finger/get','FingerPrintController@getFingerId')->name('finger.get');
     Route::group(['middleware' => 'auth:admin'], function () {
       Route::get('logout', 'AuthController@logout')->name('logout');
       Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');

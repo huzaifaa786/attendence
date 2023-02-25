@@ -25,6 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('guardian_name');
             $table->string('guardian_email');
             $table->string('api_token')->nullable();
+            $table->integer('fingerprint_id')->nullable();
+            $table->boolean('has_finger_id')->default(false);
+            $table->boolean('enrolled')->default(false);
             $table->foreignId('course_id');
             $table->string('image')->default('images/user/user.png');
             $table->rememberToken();
