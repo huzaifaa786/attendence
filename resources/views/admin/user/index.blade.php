@@ -1,8 +1,8 @@
 @extends('layout.admin')
 
 @section('styles')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.3') }}" rel="stylesheet"
-        type="text/css" />
+<link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.3')}}" rel="stylesheet"
+    type="text/css" />
 @endsection
 
 @section('title')
@@ -57,67 +57,45 @@
                             <td>{{ $user->roll_no }}</td>
                             <td>{{ $user->guardian_name }}</td>
                             <td>{{ $user->guardian_email }}</td>
+                            <td>
                             @if ($user->has_finger_id == false)
-                                <td><button class="btn btn-primary fingerid_add" fingerId="{{ $user->id }}">Add Finger
-                                        Print</button></td>
+                                <button class="btn btn-primary fingerid_add" fingerId="{{ $user->id }}">Add Finger
+                                        Print</button>
+                            @elseif( $user->enrolled)
+                           <span class="badge btn-success">FingerPrint Enrolled</span>
                             @else
-                                <td><button class="btn btn-primary">Waiting for FingerPrint</button></td>
+                                <button class="btn btn-primary">Waiting for FingerPrint</button>
                             @endif
-
-
-
+                        </td>
                             <td>
                                 <div class="pull-right">
-
+        
                                 </div>
-
-        </div>
-        </td>
-        <td></td>
-        </tr>
-        @endforeach
-
-        </tbody>
-        </table>
+            </div>
+            </td>
+            <td></td>
+                        </tr>
+                    @endforeach
+        
+            </tbody>
+            </table>
         <!--end: Datatable-->
     </div>
     </div>
 
-
-    <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Product</h5>
-                </div>
-                <div class="modal-body">
-                    <form id="deleteForm" method="POST" enctype="multipart/form-data">
-                        @method('DELETE')
-                        @csrf
-                        <label for="" class="text-danger"> Are you sure you want to delete ? </label>
-                        <input type="hidden" name="id" id="del_id">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
+ 
 @endsection
 @section('scripts')
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.3') }}"></script>
-    <!--end::Page users-->
-    <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('assets/js/pages/crud/datatables/basic/paginations.js?v=7.0.3') }}"></script>
+<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.3')}}"></script>
+<!--end::Page users-->
+<!--begin::Page Scripts(used by this page)-->
+<script src="{{asset('assets/js/pages/crud/datatables/basic/paginations.js?v=7.0.3')}}"></script>
     <!--end::Page Scripts-->
     <script>
         $(document).on('click', '.fingerid_add', function() {
 
             var fingerid = $(this).attr('fingerId');
-
+            
             $.ajax({
                 url: '{{ route('admin.finger.create') }}',
                 type: 'POST',
@@ -129,11 +107,6 @@
                     $('#alert').show();
                     $('#alert').text(response);
                     $('.fingerid_add').text('Waiting for FingerPrint');
-                    // $.ajax({
-                    //     url: "manage_users_up.php"
-                    // }).done(function(data) {
-                    //     $('#manage_users').html(data);
-                    // });
                 }
             });
         });
