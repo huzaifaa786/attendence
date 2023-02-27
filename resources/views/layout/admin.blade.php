@@ -132,6 +132,13 @@
 										<span class="menu-text">Teachers</span>
 									</a>
 								</li>	
+								<li class="menu-item {{Request::is('admin/attendance')?'menu-item-active':''}}" aria-haspopup="true">
+									<a href="{{route('admin.attendance.index')}}" class="menu-link">
+										<i class="menu-icon flaticon2-indent-dots
+										"></i>
+										<span class="menu-text">Attendance</span>
+									</a>
+								</li>
 								<li class="menu-item {{Request::is('admin/course')?'menu-item-active':''}}" aria-haspopup="true">
 									<a href="{{route('admin.course.index')}}" class="menu-link">
 										<i class="menu-icon flaticon2-indent-dots

@@ -30,6 +30,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
       Route::get('logout', 'AuthController@logout')->name('logout');
       Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');
       Route::resource('user', 'UserController');
+      Route::resource('attendance', 'FingerPrintController');
       Route::resource('teacher', 'TeacherController');
       Route::resource('course', 'CourseController');
       Route::resource('subject', 'SubjectController');

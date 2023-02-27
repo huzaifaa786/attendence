@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\DB;
 
 class FingerPrintController extends Controller
 {
+    public function index()
+    {
+       
+         
+        return view('admin.attendance.index');
+    
+    }
     public function addFingerprintId(Request $request)
     {
         $fingerid = $request->fingerid;
