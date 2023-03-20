@@ -24,7 +24,7 @@ class AuthController extends Controller
             return redirect()->route('teacher.dashboard');
         }
         else {
-            // toastr()->error('Incorrect email or password');
+            toastr()->error('Incorrect email or password');
             return redirect()->back()->withInput();
         }
     }

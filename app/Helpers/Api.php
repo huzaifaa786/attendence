@@ -44,7 +44,8 @@ class Api
 
     public function add($index,$object){
         $this->data[$index] = $object;
-    }
+    } 
+    
     
     public function json(){
         return response()->json($this->data);
