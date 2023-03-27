@@ -45,7 +45,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::group(['middleware' => 'auth:teacher'], function () {
       Route::view('dashboard', 'teacher.dashboard.index')->name('dashboard');
       Route::resource('content', 'ContentController');
-      Route::get('test', 'test.view');
 
     }
     );
