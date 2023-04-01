@@ -75,10 +75,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
+ 
 
     /**
      * Remove the specified resource from storage.
@@ -86,8 +83,24 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function delete(Request $request)
     {
-        //
+
+        $product = User::find($request->id);
+
+        $product->delete();
+        // toastr()->success('Delete successfully ');
+        return redirect()->back();
+    }
+    public function update(Request $request)
+    {
+
+
+
+        $city = User::find($request->id);
+
+        $city->update($request->all());
+        // toastr()->success('update successfully ');
+        return redirect()->back();
     }
 }

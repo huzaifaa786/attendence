@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +18,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
   return view('admin.auth.login');
 });
-
+Route::get('admin/delete/student', [UserController::class, 'delete'])->name('delete/student');
+Route::get('admin/delete/teacher', [TeacherController::class, 'delete'])->name('delete/teacher');
+Route::post('admin/edit/student', [UserController::class, 'update'])->name('edit-student');
+Route::get('admin/edit/teacher', [TeacherController::class, 'update'])->name('edit-teacher');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
   Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.',], function () {
     Route::view('login', 'admin.auth.login')->name('login');
     Route::post('/finger/create', 'FingerPrintController@addFingerprintId')->name('finger.create');
+
+
+
+
 
     Route::post('authenticate', 'AuthController@login')->name('authenticate');
     Route::post('/finger/get', 'FingerPrintController@getFingerId')->name('finger.get');

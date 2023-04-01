@@ -73,10 +73,7 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $Teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $Teacher)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -84,8 +81,24 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $Teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $Teacher)
+    public function delete(Request $request)
     {
-        //
+
+        $product = Teacher::find($request->id);
+
+        $product->delete();
+        // toastr()->success('Delete successfully ');
+        return redirect()->back();
+    }
+    public function update(Request $request)
+    {
+
+
+
+        $city = Teacher::find($request->id);
+
+        $city->update($request->all());
+        // toastr()->success('update successfully ');
+        return redirect()->back();
     }
 }
