@@ -22,24 +22,24 @@ Student Add
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label>First Name</label>
-                            <input name="fname" type="text" class="form-control" placeholder="Enter First Name"
+                            <input name="fname" type="text" class="form-control" value="{{old('fname')}}" placeholder="Enter First Name"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Last Name</label>
-                            <input name="lname" type="text" class="form-control" placeholder="Enter Last Name"
+                            <input name="lname" type="text" value="{{old('lname')}}" class="form-control" placeholder="Enter Last Name"
                                 required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label>Roll No :</label>
-                            <input name="roll_no" type="text" class="form-control" placeholder="Roll No"
+                            <input name="roll_no" type="text" value="{{old('roll_no')}}" class="form-control" placeholder="Roll No"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Email :</label>
-                            <input name="email" type="email" class="form-control" placeholder="Enter Email"
+                            <input name="email" type="email" value="{{old('email')}}" class="form-control" placeholder="Enter Email"
                                 required>
                         </div>
 
@@ -47,23 +47,23 @@ Student Add
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label>Password :</label>
-                            <input name="password" type="password" class="form-control" placeholder="Enter Email"
+                            <input name="password" type="password" value="{{old('password')}}" class="form-control" placeholder="Enter Email"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Cover Image:</label>
-                            <input name="image" type="file" class="form-control" placeholder=" Cover Image "
+                            <input name="image" type="file" value="{{old('image')}}" class="form-control" placeholder=" Cover Image "
                                 required>
 
                         </div>
                         <div class="form-group col-md-6">
                             <label>Phone :</label>
-                            <input name="phone" type="number" class="form-control" placeholder="Phone"
+                            <input name="phone" type="number" value="{{old('phone')}}" class="form-control" placeholder="Phone"
                                 required>
                         </div>
                         <div class="col-md-6">
                             <label>Select Course:</label>
-                            <select id="course_id" name="course_id" class="form-control form-control-select2 txt4" data-fouc required>
+                            <select id="course_id" name="course_id" value="{{old('course_id')}}" class="form-control form-control-select2 txt4" data-fouc required>
                                 <option selected disabled>Select Course</option>
 
                                 @foreach (App\Models\Course::all() as $course)
@@ -76,12 +76,12 @@ Student Add
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label>Guardian Name:</label>
-                            <input name="guardian_name" type="text" class="form-control" placeholder="Guardian Name"
+                            <input name="guardian_name" value="{{old('guardian_name')}}" type="text" class="form-control" placeholder="Guardian Name"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Guardian email:</label>
-                            <input name="guardian_email" type="text" class="form-control" placeholder="Guardian mail"
+                            <input name="guardian_email" value="{{old('guardian_email')}}"  type="text" class="form-control" placeholder="Guardian mail"
                                 required>
                         </div>
                     </div>

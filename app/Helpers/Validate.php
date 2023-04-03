@@ -45,6 +45,21 @@ class Validate{
         }
           
     }
+    
+    public static function teacher_register($request, $model){
+        $validator = Validator::make($request->all(),$model::teacherRules());
+        
+        if($validator->fails()){
+            toastr()->error($validator->errors()->first());
+             Redirect::to(route('admin.teacher.create'))->withInput()->send();
+           
+        }
+        else{
+            $data = [ 'api_token' => Str::random(60) ] + $request->all();
+            return $data;
+        }
+          
+    }
 
 
 

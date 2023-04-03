@@ -73,10 +73,10 @@ class TimeSlotController extends Controller
     public function delete(Request $request)
     {
 
-        $product = TimeSlot::find($request->id);
+        $timeslot = TimeSlot::find($request->id);
 
-        $product->delete();
-        // toastr()->success('Delete successfully ');
+        $timeslot->delete();
+        toastr()->success('Delete successfully ');
         return redirect()->back();
     }
     public function update(Request $request)

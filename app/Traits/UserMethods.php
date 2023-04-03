@@ -9,12 +9,23 @@ trait UserMethods
     public static function registerRules()
     {
         return [
-            'fname' => 'max:255|required',
-            'lname' => 'max:255|required',
+            'fname' => 'max:255|string|required',
+            'lname' => 'max:255|string|required',
             'email' => 'email|required|unique:users',
             'password' => 'min:6|required',
-        
-
+            'roll_no' => 'max:11|required',
+            'course_id' => 'integer|required',
+            'guardian_name' => 'required',
+            'guardian_email' => 'required',
+        ];
+    }
+    public static function teacherRules()
+    {
+        return [
+            'fname' => 'max:255|string|required',
+            'lname' => 'max:255|string|required',
+            'email' => 'email|required|unique:users',
+            'password' => 'min:6|required',
         ];
     }
 

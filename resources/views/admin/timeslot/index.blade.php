@@ -84,8 +84,8 @@ Time Slots
                 @foreach ($timeslots as $key => $slot)
                 <tr>
                     <td>{{$key+1}}</td>
-                    <td>{{$slot->start_time}}</td>
-                    <td>{{$slot->end_time}}</td>
+                    <td>{{Carbon\Carbon::parse($slot->start_time)->format('g:i A')}}</td>
+                    <td>{{Carbon\Carbon::parse($slot->end_time)->format('g:i A')}}</td>
                     <td>{{$slot->day->name}}</td>
                     
                     <td> <button type="button" class="btn btn-danger waves-effect m-r-20 btn-sm delete-btn"

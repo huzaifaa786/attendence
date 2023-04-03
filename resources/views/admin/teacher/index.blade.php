@@ -17,7 +17,7 @@ Teachers
             <h3 class="card-label">All Teachers
             </h3>
             <div class="text-right">
-            <a href="{{route('admin.teacher.create')}}" class="btn btn-primary "> Add Teacher</a>
+                <a href="{{route('admin.teacher.create')}}" class="btn btn-primary "> Add Teacher</a>
 
             </div>
         </div>
@@ -32,7 +32,8 @@ Teachers
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>phone</th>
-                    <th >Action</th>
+                    <th class="d-none">Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,28 +44,19 @@ Teachers
                     <td>{{$teacher->lname}}</td>
                     <td>{{$teacher->email}}</td>
                     <td>{{$teacher->phone}}</td>
-                
-                    {{-- <td>
-                        <div class="pull-right">
+                    <td> <button type="button" class="btn btn-danger waves-effect m-r-20 btn-sm delete-btn"
+                            id="{{ $teacher->id }}" data-toggle="modal" data-target="#delete_modal">Delete</button>
+                        <button type="button" class="btn btn-success m-r-20 btn-sm edit-btn" id="{{ $teacher->id }}"
+                            fname="{{ $teacher->fname }}" iname="{{ $teacher->lname }}" email="{{ $teacher->email }}"
+                            phone="{{ $teacher->phone }}" data-toggle="modal" data-target="#defaultModal">Edit</button>
+                    </td>
+                </tr>
+                @endforeach
 
-                        </div>
+            </tbody>
+        </table>
+        <!--end: Datatable-->
     </div>
-    </td> --}}
-    <td> <button type="button" class="btn btn-danger waves-effect m-r-20 btn-sm delete-btn"
-        id="{{ $teacher->id }}" data-toggle="modal"
-        data-target="#delete_modal">Delete</button>
-</td>
-<td> <button type="button" class="btn btn-success m-r-20 btn-sm edit-btn"
-        id="{{ $teacher->id }}" fname="{{ $teacher->fname }}"  iname="{{ $teacher->lname }}" 
-         email="{{ $teacher->email }}"  phone="{{ $teacher->phone }}" data-toggle="modal"
-        data-target="#defaultModal">Edit</button></td>
-    </tr>
-    @endforeach
-
-    </tbody>
-    </table>
-    <!--end: Datatable-->
-</div>
 </div>
 
 
@@ -104,26 +96,22 @@ Teachers
                     @csrf
                     <label> First Name</label>
                     <div class="form-group form-float">
-                        <input type="text" class="form-control" id="fname" placeholder="Name" name="fname"
-                            required>
+                        <input type="text" class="form-control" id="fname" placeholder="Name" name="fname" required>
                     </div>
                     <label>Last Name</label>
                     <div class="form-group form-float">
-                        <input type="text" class="form-control" id="iname" placeholder="Name" name="lname"
-                            required>
+                        <input type="text" class="form-control" id="iname" placeholder="Name" name="lname" required>
                     </div>
                     <label>Email</label>
                     <div class="form-group form-float">
-                        <input type="text" class="form-control" id="email" placeholder="Name" name="email"
-                            required>
+                        <input type="text" class="form-control" id="email" placeholder="Name" name="email" required>
                     </div>
                     <label>Phone</label>
                     <div class="form-group form-float">
-                        <input type="text" class="form-control" id="phone" placeholder="Name" name="phone"
-                            required>
+                        <input type="text" class="form-control" id="phone" placeholder="Name" name="phone" required>
                     </div>
                     <input type="hidden" name="id" id="del_tech">
-                 
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">SAVE CHANGES</button>

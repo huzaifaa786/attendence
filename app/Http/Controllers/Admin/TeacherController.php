@@ -38,7 +38,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        $credentials = Validate::register($request, Teacher::class);
+        $credentials = Validate::teacher_register($request, Teacher::class);
         Teacher::create($credentials);
         toastr()->info('Teacher was registered');
         return redirect()->back();

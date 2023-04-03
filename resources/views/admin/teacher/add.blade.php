@@ -22,24 +22,24 @@ Teacher Add
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label>First Name</label>
-                            <input name="fname" type="text" class="form-control" placeholder="Enter First Name"
+                            <input name="fname" type="text" value="{{old('fname')}}" class="form-control" placeholder="Enter First Name"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Last Name</label>
-                            <input name="lname" type="text" class="form-control" placeholder="Enter Last Name"
+                            <input name="lname" type="text" value="{{old('lname')}}" class="form-control" placeholder="Enter Last Name"
                                 required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label>phone:</label>
-                            <input name="phone" type="text" class="form-control" placeholder="Roll No"
+                            <input name="phone" type="text" value="{{old('phone')}}" class="form-control" placeholder="Roll No"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Email :</label>
-                            <input name="email" type="email" class="form-control" placeholder="Enter Email"
+                            <input name="email" type="email" value="{{old('email')}}" class="form-control" placeholder="Enter Email"
                                 required>
                         </div>
 
@@ -47,7 +47,7 @@ Teacher Add
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label>Password :</label>
-                            <input name="password" type="password" class="form-control" placeholder="Enter Email"
+                            <input name="password" type="password" value="{{old('password')}}" class="form-control" placeholder="Enter Email"
                                 required>
                         </div>
                     </div>
