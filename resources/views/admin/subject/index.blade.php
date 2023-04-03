@@ -91,7 +91,7 @@ Subjects
                     <td>{{$subject->teacher->fname}} {{$subject->teacher->lname}}</td>
                     <td>{{$subject->course->title}}</td>
                     
-                    <td></td>
+                  
                 </tr>
                 @endforeach
 

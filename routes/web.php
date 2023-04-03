@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\TimeSlotController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +25,15 @@ Route::get('admin/delete/student', [UserController::class, 'delete'])->name('del
 Route::get('admin/delete/teacher', [TeacherController::class, 'delete'])->name('delete/teacher');
 Route::post('admin/edit/student', [UserController::class, 'update'])->name('edit-student');
 Route::get('admin/edit/teacher', [TeacherController::class, 'update'])->name('edit-teacher');
+
+Route::get('admin/delete/course', [CourseController::class, 'delete'])->name('delete/course');
+Route::get('admin/delete/lecture', [LectureController::class, 'delete'])->name('delete/lecture');
+Route::post('admin/edit/course', [CourseController::class, 'update'])->name('edit-course');
+Route::get('admin/edit/lecture', [LectureController::class, 'update'])->name('edit-lecture');
+Route::post('admin/delete/timeslot', [TimeSlotController::class, 'delete'])->name('delete/timeslot');
+Route::get('admin/edit/timeslot', [TimeSlotController::class, 'update'])->name('edit-timeslot');
+
+
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
   Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.',], function () {

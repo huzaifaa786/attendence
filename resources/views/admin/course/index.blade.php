@@ -60,6 +60,8 @@ Courses
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,8 +69,13 @@ Courses
                 <tr>
                     <td>{{$key+1}}</td>
                     <td>{{$course->title}}</td>
-                    <
-                    <td></td>
+                    <td> <button type="button" class="btn btn-danger waves-effect m-r-20 btn-sm delete-btn"
+                        id="{{ $course->id }}" data-toggle="modal"
+                        data-target="#delete_modal">Delete</button>
+                </td>
+                <td> <button type="button" class="btn btn-success m-r-20 btn-sm edit-btn"
+                        id="{{ $course->id }}" title="{{ $course->title }}"  data-toggle="modal"
+                        data-target="#defaultModal">Edit</button></td>
                 </tr>
                 @endforeach
 
@@ -76,6 +83,57 @@ Courses
             </tbody>
         </table>
         <!--end: Datatable-->
+    </div>
+</div>
+<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Course</h5>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" method="GET" action="{{ route('delete/course') }}" enctype="multipart/form-data">
+                    @csrf
+                    <label for="" class="text-danger"> Are you sure you want to delete ? </label>
+                    <input type="hidden" name="id" id="del_id">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="title" id="defaultModalLabel">Edit Course</h4>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="Post" action="{{ route('edit-course') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+
+                    @csrf
+                    <label> Title</label>
+                    <div class="form-group form-float">
+                        <input type="text" class="form-control" id="title" placeholder="Name" name="title"
+                            required>
+                    </div>
+                    
+                    <input type="hidden" name="id" id="del_tech">
+                 
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">SAVE CHANGES</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -106,5 +164,40 @@ Courses
                         $('#deleteForm').attr('action','{{route('admin.user.destroy','')}}' +'/'+id);
         });
     });
+</script>
+<script>
+    $(document).ready(function() {
+
+
+
+        $('tbody').on('click', '.delete-btn', function() {
+
+            let id = this.id;
+
+            $('#del_id').val(id);
+
+            // $('#deleteForm').attr('action', '{{ route('delete/teacher', '') }}' + '/' + id);
+
+        });
+        $('tbody').on('click', '.edit-btn', function() {
+
+            let id = this.id;
+            let title = $(this).attr('title');
+          
+
+            // let image = $(this).attr('image');
+
+
+
+            $('#title').val(title);
+            $('#del_tech').val(id);
+            
+           
+
+            // $('#updateForm').attr('action', '{{ route('edit-teacher', '') }}' + '/' + id);
+
+        });
+
+    })
 </script>
 @endsection

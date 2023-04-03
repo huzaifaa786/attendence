@@ -70,19 +70,24 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function delete(Request $request)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Course $course)
+        $product = Course::find($request->id);
+
+        $product->delete();
+        // toastr()->success('Delete successfully ');
+        return redirect()->back();
+    }
+    public function update(Request $request)
     {
-        //
+
+
+
+        $city = Course::find($request->id);
+
+        $city->update($request->all());
+        // toastr()->success('update successfully ');
+        return redirect()->back();
     }
 }

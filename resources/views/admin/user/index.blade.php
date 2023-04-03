@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="card card-custom">
-        <div class="card-header flex-wrap py-5">
+        <div class="card-header flex-wrap p">
             <div class="card-title">
                 <h3 class="card-label">All Students
                 </h3>
@@ -25,7 +25,7 @@
                 <label id="alert"></label>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body p-2">
             <!--begin: Datatable-->
             <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
                 <thead>
@@ -41,7 +41,7 @@
                         <th>Guardian Name</th>
                         <th>Guardian Email</th>
                         <th>Manage FingerPrint</th>
-                        {{-- <th class="d-none">Action</th> --}}
+                      <th class="d-none">Action</th>
                         <th>Action</th>
                       
                     </tr>
@@ -80,6 +80,7 @@
                 guardian_name="{{ $user->guardian_name }}"guardian_email="{{ $user->guardian_email }}"course="{{ $user->course->id }}"
                 image="{{ $user->image }}" data-toggle="modal"
                 data-target="#defaultModal">Edit</button></td>
+                <td></td>
                         </tr>
                     @endforeach
         

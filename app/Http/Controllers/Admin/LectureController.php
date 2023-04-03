@@ -16,6 +16,9 @@ class LectureController extends Controller
     public function index()
     {
         $lectures =  Lecture::all();
+        // foreach ($lectures as $key => $value) {
+        //     dd($value->timeslot);
+        // }
         return view('admin.lecture.index')->with('lectures',$lectures);
     }
 
@@ -70,19 +73,24 @@ class LectureController extends Controller
      * @param  \App\Models\Lecture  $lecture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lecture $lecture)
+    public function delete(Request $request)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Lecture  $lecture
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Lecture $lecture)
+        $product = Lecture::find($request->id);
+
+        $product->delete();
+        // toastr()->success('Delete successfully ');
+        return redirect()->back();
+    }
+    public function update(Request $request)
     {
-        //
+
+
+
+        $city = Lecture::find($request->id);
+
+        $city->update($request->all());
+        // toastr()->success('update successfully ');
+        return redirect()->back();
     }
 }

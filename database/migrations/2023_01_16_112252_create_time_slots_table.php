@@ -18,6 +18,7 @@ class CreateTimeSlotsTable extends Migration
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
             $table->foreignId('day_id');
+            $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -70,19 +70,24 @@ class TimeSlotController extends Controller
      * @param  \App\Models\TimeSlot  $timeSlot
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TimeSlot $timeSlot)
+    public function delete(Request $request)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TimeSlot  $timeSlot
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TimeSlot $timeSlot)
+        $product = TimeSlot::find($request->id);
+
+        $product->delete();
+        // toastr()->success('Delete successfully ');
+        return redirect()->back();
+    }
+    public function update(Request $request)
     {
-        //
+
+
+
+        $city = TimeSlot::find($request->id);
+
+        $city->update($request->all());
+        // toastr()->success('update successfully ');
+        return redirect()->back();
     }
 }
