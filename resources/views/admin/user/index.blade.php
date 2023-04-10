@@ -34,15 +34,12 @@ Students
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>phone</th>
                     <th>Course</th>
                     <th>Profile</th>
                     <th>Roll No</th>
-                    <th>Guardian Name</th>
-                    <th>Guardian Email</th>
                     <th>Manage FingerPrint</th>
                     <th class="d-none">Action</th>
-                    <th>Action</th>
+                    <th >Action</th>
 
                 </tr>
             </thead>
@@ -53,15 +50,12 @@ Students
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->phone }}</td>
                     <td>{{ $user->course->title }}</td>
                     <td><img src="{{ $user->image }}" height="50" width="50"> </td>
                     <td>{{ $user->roll_no }}</td>
-                    <td>{{ $user->guardian_name }}</td>
-                    <td>{{ $user->guardian_email }}</td>
                     <td>
                         @if ($user->has_finger_id == false)
-                        <button class="btn btn-primary fingerid_add" fingerId="{{ $user->id }}">Add Finger
+                        <button class="btn btn-primary fingerid_add" fingerId="{{ $user->id }}">+ Finger
                             Print</button>
                         @elseif( $user->enrolled)
                         <span class="badge btn-success">FingerPrint Enrolled</span>

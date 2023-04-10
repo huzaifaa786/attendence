@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\TimeSlot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TimeSlotController extends Controller
 {
@@ -37,6 +38,16 @@ class TimeSlotController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'start_time' => ['required'],
+            'end_time' => ['required','after:start_time'],
+            'day_id' => ['required'],
+        ]);
+        if($validator->fails()){
+            toastr()->error($validator->errors()->first());
+             return redirect()->back();
+           
+        }
         TimeSlot::create($request->all());
         return redirect()->back();
     }

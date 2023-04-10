@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Lecture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LectureController extends Controller
 {
@@ -40,6 +41,20 @@ class LectureController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'subject_id' => ['required'],
+            'room_id' => ['required'],
+            'timeslot_id' => ['required'],
+        ]);
+        $lecture = Lecture::where('subject_id',$request->subject_id)->where('room_id',$request->room_id)->where('timeslot_id',$request->timeslot_id)->first();
+        if($lecture){
+            toastr()->error('lecture with this timeslot and room already exists');
+            return redirect()->back();
+        }
+        if($validator->fails()){
+            toastr()->error($validator->errors()->first());
+             return redirect()->back();
+        }
         Lecture::create($request->all());
         return redirect()->back();
     }
