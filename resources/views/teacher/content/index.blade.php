@@ -46,6 +46,16 @@ Subjects
                             <label>File Content:</label>
                             <input name="file" type="file" class="form-control" placeholder="choose file"
                             required>
+                        </div> 
+                         <div class="col-md-6">
+                            <label>Video Link (if any):</label>
+                            <input name="link" type="url" class="form-control" placeholder="Link"
+                            required>
+                        </div>
+                         <div class="col-md-6 mt-2">
+                            <label>Description:</label>
+                            <input name="description" type="text" class="form-control" placeholder="Description"
+                            required>
                         </div>
                     </div>
 
@@ -77,6 +87,8 @@ Subjects
                     <th>Title</th>
                     <th>Subject</th>
                     <th>File</th>
+                    <th>Link</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -86,6 +98,8 @@ Subjects
                     <td>{{$content->title}}</td>
                     <td>{{$content->subject->name}}</td>
                     <td><a href="{{$content->file}}"> file</td>
+                        <td><a target="blank" href="{{$content->link}}">{{$content->link}} </a> </td>
+                        <td>{{$content->description}}</td>
                     
                     <td></td>
                 </tr>

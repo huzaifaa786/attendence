@@ -10,7 +10,7 @@ class Content extends Model
 {
     use HasFactory;
     protected $fillable = [ 
-        'title','subject_id','file'
+        'title','subject_id','file','link','description'
     ];
 
 
