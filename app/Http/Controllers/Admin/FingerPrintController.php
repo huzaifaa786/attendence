@@ -87,7 +87,6 @@ class FingerPrintController extends Controller
                     $current_day = now()->format('l');
 
                     $current_time = now()->format('H:i:s');
-                    dd($current_time);
 
                     $lecture = DB::table('lectures')
                         ->join('time_slots', 'lectures.timeslot_id', '=', 'time_slots.id')
@@ -97,6 +96,7 @@ class FingerPrintController extends Controller
                         ->whereTime('time_slots.end_time', '>=', $current_time)
                         ->select('lectures.*')
                         ->first();
+                        dd($lecture);
                     if ($lecture) {
                         Attendance::create(['fingerprint_id' => $fingerID,'lecture_id' => $lecture->id]);
                         $subject = Subject::find($lecture->subject_id);
