@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\TimeSlotController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::post('admin/delete/timeslot', [TimeSlotController::class, 'delete'])->nam
 Route::get('admin/edit/timeslot', [TimeSlotController::class, 'update'])->name('edit-timeslot');
 
 
+Route::get('email/job', [JobController::class, 'sendMails']);
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
   Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.',], function () {
