@@ -35,7 +35,7 @@ class DefaultMail extends Mailable
     {
         return $this->view('admin.mail.index')
             ->subject('Attendance')
-            ->from('info@attendance.klickwash.net','asdfasdf')
+            ->from('info@attendance.klickwash.net','UOS Attendance Alert')
             ->with([
                 'user' => $this->user,
                 'subject' => $this->subject,
