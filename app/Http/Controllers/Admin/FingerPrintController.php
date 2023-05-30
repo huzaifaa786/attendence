@@ -96,7 +96,7 @@ class FingerPrintController extends Controller
                         ->whereTime('time_slots.end_time', '>=', $current_time)
                         ->select('lectures.*')
                         ->first();
-                        dd($lecture);
+                        
                     if ($lecture) {
                         Attendance::create(['fingerprint_id' => $fingerID,'lecture_id' => $lecture->id]);
                         $subject = Subject::find($lecture->subject_id);
