@@ -25,6 +25,7 @@ Attendance
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Subject Name</th>
                     <th>Date & time</th>
                     <th></th>
 
@@ -36,6 +37,7 @@ Attendance
                 <tr>
                     <td>{{$key+1}}</td>
                     <td>{{App\Models\User::find($attendance->fingerprint_id)->fname}}</td>
+                    <td>{{$attendance->lecture->subject->name}}</td>
                     <td>{{Carbon\Carbon::parse($attendance->created_at)->format('d M Y g:i:A')}}</td>
 
                     

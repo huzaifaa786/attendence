@@ -17,6 +17,7 @@ class CreateAttendancesTable extends Migration
             $table->id();
             $table->integer('fingerprint_id')->nullable();
             $table->foreignId('lecture_id');
+            $table->foreign('lecture_id')->references('id')->on('lectures')->onDelete('cascade');
             $table->timestamps();
         });
     }
