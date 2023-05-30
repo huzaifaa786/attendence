@@ -87,6 +87,7 @@ class FingerPrintController extends Controller
                     $current_day = now()->format('l');
 
                     $current_time = now()->format('H:i:s');
+                    dd($current_time);
 
                     $lecture = DB::table('lectures')
                         ->join('time_slots', 'lectures.timeslot_id', '=', 'time_slots.id')
