@@ -9,6 +9,7 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'fingerprint_id' 
+        'fingerprint_id',
+        'lecture_id'
     ];
 }

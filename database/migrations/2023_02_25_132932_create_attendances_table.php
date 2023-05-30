@@ -16,6 +16,7 @@ class CreateAttendancesTable extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->integer('fingerprint_id')->nullable();
+            $table->foreignId('lecture_id');
             $table->timestamps();
         });
     }

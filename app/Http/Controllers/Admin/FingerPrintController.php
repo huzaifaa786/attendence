@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\MailHelper;
 use App\Http\Controllers\Controller;
+use App\Mail\DefaultMail;
 use App\Models\Attendance;
+use App\Models\Subject;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class FingerPrintController extends Controller
 {
     public function index()
     {
-       
-         
+
+
         return view('admin.attendance.index');
-    
     }
     public function addFingerprintId(Request $request)
     {
@@ -80,13 +83,29 @@ class FingerPrintController extends Controller
             if ($user) {
                 // An existed fingerprint has been detected for Login or Logout
                 if ($user->enrolled) {
-                    $log = Attendance::create(['fingerprint_id' => $fingerID]);
-                    return 'login';
+
+                    $current_day = now()->format('l');
+
+                    $current_time = now()->format('H:i:s');
+
+                    $lecture = DB::table('lectures')
+                        ->join('time_slots', 'lectures.timeslot_id', '=', 'time_slots.id')
+                        ->join('days', 'time_slots.day_id', '=', 'days.id')
+                        ->where('days.name', $current_day)
+                        ->whereTime('time_slots.start_time', '<=', $current_time)
+                        ->whereTime('time_slots.end_time', '>=', $current_time)
+                        ->select('lectures.*')
+                        ->first();
+                    if ($lecture) {
+                        Attendance::create(['fingerprint_id' => $fingerID,'lecture_id' => $lecture->id]);
+                        $subject = Subject::find($lecture->subject_id);
+                        Mail::to($user->email)->send(new DefaultMail($user,$subject));
+                        return 'login';
+                    } else {
+                        return 'no lecture';
+                    }
                 }
             }
-
-            // An available Fingerprint has been detected
-
         }
     }
 }
