@@ -22,5 +22,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::group(['middleware' => 'auth:api'], function () {
         Route::any('content','ContentController@content');
         Route::any('subjects','SubjectController@subjects');
+        Route::any('attendance/get','AttendanceController@get');
     });
 });
