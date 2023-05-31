@@ -11,7 +11,7 @@
                         class="card-title font-weight-bolder text-light text-hover-state-dark font-size-h6 mb-4 d-block">Total
                         Teachers</a>
                     <div class="font-weight-bold text-muted font-size-sm">
-                        <span class="text-light font-size-h2 font-weight-bolder mr-2">1</span>
+                        <span class="text-light font-size-h2 font-weight-bolder mr-2">{{App\Models\Teacher::count()}}</span>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         class="card-title font-weight-bolder text-light text-hover-state-dark font-size-h6 mb-4 d-block">Total
                         Students</a>
                     <div class="font-weight-bold text-muted font-size-sm">
-                        <span class="text-light font-size-h2 font-weight-bolder mr-2">1</span>
+                        <span class="text-light font-size-h2 font-weight-bolder mr-2">{{App\Models\User::count()}}</span>
                     </div>
                 </div>
             </div>
